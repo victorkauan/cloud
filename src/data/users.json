@@ -1,0 +1,56 @@
+[
+  {
+    "first_name": "First name 01",
+    "last_name": "Last name 01",
+    "gender": "male",
+    "address": "Address 01",
+    "is_admin": "false",
+    "email": "email01@email.com",
+    "password": "password01"
+  },
+  {
+    "first_name": "First name 02",
+    "last_name": "Last name 02",
+    "gender": "female",
+    "address": "Address 02",
+    "is_admin": "false",
+    "email": "email02@email.com",
+    "password": "password02"
+  },
+  {
+    "first_name": "First name 03",
+    "last_name": "Last name 03",
+    "gender": "male",
+    "address": "Address 03",
+    "is_admin": "false",
+    "email": "email03@email.com",
+    "password": "password03"
+  },
+  {
+    "first_name": "First name 04",
+    "last_name": "Last name 04",
+    "gender": "female",
+    "address": "Address 04",
+    "is_admin": "false",
+    "email": "email04@email.com",
+    "password": "password04"
+  },
+  {
+    "first_name": "First name 05",
+    "last_name": "Last name 05",
+    "gender": "male",
+    "address": "Address 05",
+    "is_admin": "true",
+    "email": "email05@email.com",
+    "password": "password05"
+  },
+  {
+    "first_name": "First name 06",
+    "last_name": "Last name 06",
+    "gender": "female",
+    "address": "Address 06",
+    "is_admin": "true",
+    "email": "email06@email.com",
+    "password": "password06"
+  }
+]

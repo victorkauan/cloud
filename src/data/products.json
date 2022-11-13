@@ -1,0 +1,72 @@
+[
+  {
+    "id": "001",
+    "name": "Product 01",
+    "description": "Product 01 description",
+    "price": "10",
+    "tag": "1"
+  },
+  {
+    "id": "002",
+    "name": "Product 02",
+    "description": "Product 02 description",
+    "price": "20",
+    "tag": "2"
+  },
+  {
+    "id": "003",
+    "name": "Product 03",
+    "description": "Product 03 description",
+    "price": "30",
+    "tag": "3"
+  },
+  {
+    "id": "004",
+    "name": "Product 04",
+    "description": "Product 04 description",
+    "price": "40",
+    "tag": "4"
+  },
+  {
+    "id": "005",
+    "name": "Product 05",
+    "description": "Product 05 description",
+    "price": "50",
+    "tag": "5"
+  },
+  {
+    "id": "006",
+    "name": "Product 06",
+    "description": "Product 06 description",
+    "price": "60",
+    "tag": "6"
+  },
+  {
+    "id": "007",
+    "name": "Product 07",
+    "description": "Product 07 description",
+    "price": "70",
+    "tag": "7"
+  },
+  {
+    "id": "008",
+    "name": "Product 08",
+    "description": "Product 08 description",
+    "price": "80",
+    "tag": "8"
+  },
+  {
+    "id": "009",
+    "name": "Product 09",
+    "description": "Product 09 description",
+    "price": "90",
+    "tag": "9"
+  },
+  {
+    "id": "010",
+    "name": "Product 10",
+    "description": "Product 10 description",
+    "price": "100",
+    "tag": "10"
+  }
+]
