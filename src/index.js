@@ -12,6 +12,7 @@ const path = require('path');
 
 // - File System
 const fs = require('fs');
+const { json } = require('express');
 
 // Configurations
 // - Handlebars
@@ -128,6 +129,11 @@ app.post('/admin/produtos/deletar', (req, res) => {
     });
 
     res.redirect('/admin/produtos');
+});
+
+app.get('/admin/categorias', (req, res) => {
+    const categories = require(paths.categories);
+    res.render('admin/category/list', { title: "ADM : Categorias", categories });
 });
 
 app.listen(PORT, () => {

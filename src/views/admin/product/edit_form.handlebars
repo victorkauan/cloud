@@ -2,7 +2,7 @@
     <h1>Painel administrativo: Editar produto</h1>
     <form action="/admin/produtos/editar" method="POST">
         <label for="id">ID </label>
-        <input type="text" name="id" id="name" value="{{id}}" readonly>
+        <input type="text" name="id" id="id" value="{{id}}" readonly>
         <br>
         <label for="name">Nome </label>
         <input type="text" name="name" id="name" value="{{name}}">
@@ -13,7 +13,7 @@
         <label for="price">Preço </label>
         <input type="text" name="price" id="price" value="{{price}}">
         <br>
-        <label for="categoria">Categoria </label>
+        <label for="tag">Categoria </label>
         <input type="text" name="tag" id="tag" value="{{tag}}">
         <br>
         <input type="submit" value="Editar">
