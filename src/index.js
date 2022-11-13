@@ -28,7 +28,7 @@ const paths = {
     products: path.join(__dirname, 'data', 'products.json'),
     categories: path.join(__dirname, 'data', 'categories.json'),
     users: path.join(__dirname, 'data', 'users.json'),
-}
+};
 
 // Routes
 // - General
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 // - Admin
 app.get('/admin/painel', (req, res) => {
     res.render('admin/panel', { title: 'Painel Administrativo' });
-})
+});
 
 app.get('/admin/produtos/editar/:id', (req, res) => {
     const products = require(paths.products);
@@ -53,8 +53,8 @@ app.get('/admin/produtos/editar/:id', (req, res) => {
             const { name, description, price, tag } = product;
             res.render('admin/product/edit_form', { id: parameter_id, name, description, price, tag, title: 'ADM : Editar' });
         }
-    })
-})
+    });
+});
 
 app.post('/admin/produtos/editar', (req, res) => {
     const products = require(paths.products);
@@ -69,17 +69,33 @@ app.post('/admin/produtos/editar', (req, res) => {
                 description,
                 price,
                 tag,
-            }
+            };
             newProducts[index] = newProduct;
 
             fs.writeFile(paths.products, JSON.stringify(newProducts, null, 4), (error) => {
                 console.log(error ? `ERROR: ${error}` : 'SUCCESS');
-            })
+            });
         }
-    })
+    });
 
     res.redirect('/admin/painel');
-})
+});
+
+app.get('/admin/produtos/deletar', (req, res) => {
+    res.render('admin/product/delete_form', { title: 'ADM : Deletar' });
+});
+
+app.post('/admin/produtos/deletar', (req, res) => {
+    const products = require(paths.products);
+    const { id } = req.body;
+
+    let newProducts = products.filter(product => id !== product.id);
+    fs.writeFile(paths.products, JSON.stringify(newProducts, null, 4), (error) => {
+        console.log(error ? `ERROR: ${error}` : 'SUCCESS');
+    });
+
+    res.redirect('/admin/painel');
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}!`);
