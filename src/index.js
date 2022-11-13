@@ -44,7 +44,7 @@ app.get('/admin/painel', (req, res) => {
 });
 
 app.get('/admin/produtos/criar', (req, res) => {
-    res.render('admin/product/create_form', { title: 'ADM : Criar' });
+    res.render('admin/product/create_form', { title: 'ADM : Criar Produto' });
 });
 
 app.post('/admin/produtos/criar', (req, res) => {
@@ -73,7 +73,7 @@ app.post('/admin/produtos/criar', (req, res) => {
 
 app.get('/admin/produtos', (req, res) => {
     const products = require(paths.products);
-    res.render('admin/product/list', { title: 'ADM : Produtos', products });
+    res.render('admin/product/list', { title: 'ADM : Listar Produtos', products });
 });
 
 app.get('/admin/produtos/editar/:id', (req, res) => {
@@ -85,7 +85,7 @@ app.get('/admin/produtos/editar/:id', (req, res) => {
 
         if (parameter_id == id) {
             const { name, description, price, tag } = product;
-            res.render('admin/product/edit_form', { id: parameter_id, name, description, price, tag, title: 'ADM : Editar' });
+            res.render('admin/product/edit_form', { id: parameter_id, name, description, price, tag, title: 'ADM : Editar Produto' });
         }
     });
 });
@@ -94,17 +94,10 @@ app.post('/admin/produtos/editar', (req, res) => {
     const products = require(paths.products);
     const { id, name, description, price, tag } = req.body;
 
-    let newProducts = [...products];
-    products.forEach((product, index) => {
+    const newProducts = [...products];
+    newProducts.forEach((product, index) => {
         if (id === product.id) {
-            const newProduct = {
-                id: product.id,
-                name,
-                description,
-                price,
-                tag,
-            };
-            newProducts[index] = newProduct;
+            newProducts[index] = { id, name, description, price, tag };
 
             fs.writeFile(paths.products, JSON.stringify(newProducts, null, 4), (error) => {
                 console.log(error ? `ERROR: ${error}` : 'SUCCESS');
@@ -116,7 +109,7 @@ app.post('/admin/produtos/editar', (req, res) => {
 });
 
 app.get('/admin/produtos/deletar', (req, res) => {
-    res.render('admin/product/delete_form', { title: 'ADM : Deletar' });
+    res.render('admin/product/delete_form', { title: 'ADM : Deletar Produto' });
 });
 
 app.post('/admin/produtos/deletar', (req, res) => {
@@ -132,7 +125,7 @@ app.post('/admin/produtos/deletar', (req, res) => {
 });
 
 app.get('/admin/categorias/criar', (req, res) => {
-    res.render('admin/category/create_form');
+    res.render('admin/category/create_form', { title: 'ADM : Criar Categoria' });
 })
 
 app.post('/admin/categorias/criar', (req, res) => {
@@ -158,7 +151,37 @@ app.post('/admin/categorias/criar', (req, res) => {
 
 app.get('/admin/categorias', (req, res) => {
     const categories = require(paths.categories);
-    res.render('admin/category/list', { title: "ADM : Categorias", categories });
+    res.render('admin/category/list', { title: 'ADM : Listar Categorias', categories });
+});
+
+app.get('/admin/categorias/editar/:id', (req, res) => {
+    const categories = require(paths.categories);
+    const { id: parameter_id } = req.params;
+
+    categories.forEach((category) => {
+        if (parameter_id === category.id) {
+            const { id, name } = category;
+            res.render('admin/category/edit_form', { id, name, title: 'ADM : Editar Categoria' });
+        }
+    });
+});
+
+app.post('/admin/categorias/editar', (req, res) => {
+    const categories = require(paths.categories)
+    const { id, name } = req.body;
+
+    const newCategories = [...categories];
+    newCategories.forEach((category, index) => {
+        if (id === category.id) {
+            newCategories[index] = { id, name };
+
+            fs.writeFile(paths.categories, JSON.stringify(newCategories, null, 4), (error) => {
+                console.log(error ? `ERROR: ${error}` : 'SUCCESS');
+            });
+        }
+    });
+
+    res.redirect('/admin/categorias');
 });
 
 app.listen(PORT, () => {
