@@ -42,6 +42,12 @@ app.get('/admin/painel', (req, res) => {
     res.render('admin/panel', { title: 'Painel Administrativo' });
 });
 
+app.get('/admin/produtos', (req, res) => {
+    const products = require(paths.products);
+    res.render('admin/product/list', { title: 'ADM : Produtos', products });
+});
+
+
 app.get('/admin/produtos/editar/:id', (req, res) => {
     const products = require(paths.products);
     const { id: parameter_id } = req.params;
