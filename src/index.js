@@ -42,11 +42,38 @@ app.get('/admin/painel', (req, res) => {
     res.render('admin/panel', { title: 'Painel Administrativo' });
 });
 
+app.get('/admin/produtos/criar', (req, res) => {
+    res.render('admin/product/create_form', { title: 'ADM : Criar' });
+});
+
+app.post('/admin/produtos/criar', (req, res) => {
+    const products = require(paths.products);
+    const { name, description, price, tag } = req.body;
+
+    const newId = Number(products[products.length - 1].id) + 1;
+
+    const newProduct = {
+        id: String(newId),
+        name,
+        description,
+        price,
+        tag,
+    };
+
+    const newProducts = [...products];
+    newProducts.push(newProduct);
+
+    fs.writeFile(paths.products, JSON.stringify(newProducts, null, 4), (error) => {
+        console.log(error ? `ERROR: ${error}` : 'SUCCESS');
+    });
+
+    res.redirect('/admin/produtos');
+});
+
 app.get('/admin/produtos', (req, res) => {
     const products = require(paths.products);
     res.render('admin/product/list', { title: 'ADM : Produtos', products });
 });
-
 
 app.get('/admin/produtos/editar/:id', (req, res) => {
     const products = require(paths.products);
@@ -84,7 +111,7 @@ app.post('/admin/produtos/editar', (req, res) => {
         }
     });
 
-    res.redirect('/admin/painel');
+    res.redirect('/admin/produtos');
 });
 
 app.get('/admin/produtos/deletar', (req, res) => {
@@ -100,7 +127,7 @@ app.post('/admin/produtos/deletar', (req, res) => {
         console.log(error ? `ERROR: ${error}` : 'SUCCESS');
     });
 
-    res.redirect('/admin/painel');
+    res.redirect('/admin/produtos');
 });
 
 app.listen(PORT, () => {
