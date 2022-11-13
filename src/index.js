@@ -131,6 +131,31 @@ app.post('/admin/produtos/deletar', (req, res) => {
     res.redirect('/admin/produtos');
 });
 
+app.get('/admin/categorias/criar', (req, res) => {
+    res.render('admin/category/create_form');
+})
+
+app.post('/admin/categorias/criar', (req, res) => {
+    const categories = require(paths.categories);
+    const categoryName = req.body.name;
+
+    const newId = Number(categories[categories.length - 1].id) + 1;
+
+    const newCategory = {
+        id: String(newId),
+        name: categoryName,
+    };
+
+    const newCategories = [...categories];
+    newCategories.push(newCategory);
+
+    fs.writeFile(paths.categories, JSON.stringify(newCategories, null, 4), (error) => {
+        console.log(error ? `ERROR: ${error}` : 'SUCCESS');
+    });
+
+    res.redirect('/admin/categorias');
+});
+
 app.get('/admin/categorias', (req, res) => {
     const categories = require(paths.categories);
     res.render('admin/category/list', { title: "ADM : Categorias", categories });
