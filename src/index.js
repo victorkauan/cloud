@@ -117,6 +117,7 @@ app.post('/admin/produtos/deletar', (req, res) => {
     const { id } = req.body;
 
     let newProducts = products.filter(product => id !== product.id);
+
     fs.writeFile(paths.products, JSON.stringify(newProducts, null, 4), (error) => {
         console.log(error ? `ERROR: ${error}` : 'SUCCESS');
     });
@@ -179,6 +180,23 @@ app.post('/admin/categorias/editar', (req, res) => {
                 console.log(error ? `ERROR: ${error}` : 'SUCCESS');
             });
         }
+    });
+
+    res.redirect('/admin/categorias');
+});
+
+app.get('/admin/categorias/deletar', (req, res) => {
+    res.render('admin/category/delete_form', { title: 'ADM : Deletar Categoria' });
+});
+
+app.post('/admin/categorias/deletar', (req, res) => {
+    const categories = require(paths.categories);
+    const { id } = req.body;
+
+    const newCategories = categories.filter(category => id !== category.id);
+
+    fs.writeFile(paths.categories, JSON.stringify(newCategories, null, 4), (error) => {
+        console.log(error ? `ERROR: ${error}` : 'SUCCESS');
     });
 
     res.redirect('/admin/categorias');
