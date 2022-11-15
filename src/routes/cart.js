@@ -6,7 +6,7 @@ const router = express.Router();
 const { paths } = require("../utils/paths");
 
 // - Update data
-const { updateCarts } = require("../utils/updateData");
+const { updateCarts } = require("../utils/data");
 
 router.get("/adicionar", (req, res) => {
   res.render("cart/add", { title: "Carrinho" });

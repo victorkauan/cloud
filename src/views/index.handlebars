@@ -1,1 +1,10 @@
-{{message}}
+<h1>Lista de produtos:</h1>
+<ul>
+  {{#each products}}
+    <li>
+      <p>{{this.name}}</p>
+      <p>Preço: R$ {{this.price}}</p>
+      <p>Descrição: {{this.description}}</p>
+    </li>
+  {{/each}}
+</ul>

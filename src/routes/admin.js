@@ -1,14 +1,13 @@
 // - Express
 const express = require('express');
 const router = express.Router();
-// - Application paths
-const { paths } = require('../utils/paths');
-// - Update data
+// - Data functions
 const {
+  getProducts,
+  getCategories,
   updateProducts,
   updateCategories,
-  updateUsers,
-} = require('../utils/updateData');
+} = require('../utils/data');
 
 // Panel
 router.get('/', (req, res) => {
@@ -22,7 +21,7 @@ router.get('/produtos/criar', (req, res) => {
 });
 
 router.post('/produtos/criar', (req, res) => {
-  const products = require(paths.products);
+  const products = getProducts();
   const { name, description, price, tag } = req.body;
 
   const newId = Number(products[products.length - 1].id) + 1;
@@ -44,7 +43,7 @@ router.post('/produtos/criar', (req, res) => {
 
 // - Read
 router.get('/produtos', (req, res) => {
-  const products = require(paths.products);
+  const products = getProducts();
   res.render('admin/product/list', {
     title: 'ADM : Listar Produtos',
     products,
@@ -53,7 +52,7 @@ router.get('/produtos', (req, res) => {
 
 // - Update
 router.get('/produtos/editar/:id', (req, res) => {
-  const products = require(paths.products);
+  const products = getProducts();
   const { id: parameter_id } = req.params;
 
   products.forEach((product) => {
@@ -74,7 +73,7 @@ router.get('/produtos/editar/:id', (req, res) => {
 });
 
 router.post('/produtos/editar', (req, res) => {
-  const products = require(paths.products);
+  const products = getProducts();
   const { id, name, description, price, tag } = req.body;
 
   const newProducts = [...products];
@@ -95,7 +94,7 @@ router.get('/produtos/deletar', (req, res) => {
 });
 
 router.post('/produtos/deletar', (req, res) => {
-  const products = require(paths.products);
+  const products = getProducts();
   const { id } = req.body;
 
   let newProducts = products.filter((product) => id !== product.id);
@@ -112,7 +111,7 @@ router.get('/categorias/criar', (req, res) => {
 });
 
 router.post('/categorias/criar', (req, res) => {
-  const categories = require(paths.categories);
+  const categories = getCategories();
   const categoryName = req.body.name;
 
   const newId = Number(categories[categories.length - 1].id) + 1;
@@ -132,7 +131,7 @@ router.post('/categorias/criar', (req, res) => {
 
 // - Read
 router.get('/categorias', (req, res) => {
-  const categories = require(paths.categories);
+  const categories = getCategories();
   res.render('admin/category/list', {
     title: 'ADM : Listar Categorias',
     categories,
@@ -141,7 +140,7 @@ router.get('/categorias', (req, res) => {
 
 // - Update
 router.get('/categorias/editar/:id', (req, res) => {
-  const categories = require(paths.categories);
+  const categories = getCategories();
   const { id: parameter_id } = req.params;
 
   categories.forEach((category) => {
@@ -157,7 +156,7 @@ router.get('/categorias/editar/:id', (req, res) => {
 });
 
 router.post('/categorias/editar', (req, res) => {
-  const categories = require(paths.categories);
+  const categories = getCategories();
   const { id, name } = req.body;
 
   const newCategories = [...categories];
@@ -180,7 +179,7 @@ router.get('/categorias/deletar', (req, res) => {
 });
 
 router.post('/categorias/deletar', (req, res) => {
-  const categories = require(paths.categories);
+  const categories = getCategories();
   const { id } = req.body;
 
   const newCategories = categories.filter((category) => id !== category.id);
