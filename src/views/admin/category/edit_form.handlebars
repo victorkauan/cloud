@@ -1,15 +1,15 @@
-<div class="card">
-    <h1>Painel administrativo: Editar categoria</h1>
-    <form action="/admin/categorias/editar" method="POST">
-        <label for="id">ID </label>
-        <input type="text" name="id" id="id" value="{{id}}" readonly>
-        <br>
-        <label for="name">Nome </label>
-        <input type="text" name="name" id="name" value="{{name}}">
-        <br>
-        <input type="submit" value="Editar">
-    </form>
+<div class='card'>
+  <h1>Painel administrativo: Editar categoria</h1>
+  <form action='/admin/categorias/editar' method='POST'>
+    <label for='id'>ID </label>
+    <input type='text' name='id' id='id' value='{{id}}' readonly />
+    <br />
+    <label for='name'>Nome </label>
+    <input type='text' name='name' id='name' value='{{name}}' />
+    <br />
+    <input type='submit' value='Editar' />
+  </form>
 </div>
-<form action="/admin/painel">
-    <input type="submit" value="Voltar ao painel">
+<form action='/admin'>
+  <input type='submit' value='Voltar ao painel' />
 </form>
