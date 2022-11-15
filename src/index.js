@@ -14,7 +14,10 @@ const { getProducts } = require('./utils/data');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 app.engine('handlebars', engine());
-// - Forms
+// - Static files
+app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
+// - Form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,7 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 const admin = require('./routes/admin');
 const cart = require('./routes/cart');
 
-// - General
 app.get('/', (req, res) => {
   const products = getProducts();
 
