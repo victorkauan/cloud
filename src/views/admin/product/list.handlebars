@@ -1,17 +1,35 @@
-<ul>
+<h1 class='font-bold text-center text-2xl pb-2 2xs:text-left'>Lista de produtos:</h1>
+<ul
+  class='mb-2 grid gap-2 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'
+>
   {{#each products}}
-    <li>
-      <h2>Nome : {{this.name}}</h2>
-      <p><strong>Descricao</strong> : {{this.description}}</p>
-      <p><strong>Preço</strong> : {{this.price}}</p>
-      <p><strong>Categoria</strong> : {{this.tag}}</p>
-      <p><strong>ID</strong> : {{this.id}}</p>
-      <form action='/admin/produtos/editar/{{this.id}}' method='GET'>
-        <input type='submit' value='Editar' />
-      </form>
+    <li class='border-2 border-primary-green rounded-md p-4 shadow'>
+      <h2 class='text-xl font-bold'>{{this.name}}</h2>
+      <p><strong>ID</strong>: {{this.id}}</p>
+      <p><strong>Preço</strong>: {{this.formatted_price}}</p>
+      {{!-- <p><strong>Categoria</strong>: {{this.tag}}</p> --}}
+      <p><strong>Descrição</strong>: {{this.description}}</p>
+
+      <div
+        class='text-center grid grid-cols-2 justify-between items-center gap-2 mt-2'
+      >
+        <a
+          href='/admin/produtos/editar/{{this.id}}'
+          class='text-white bg-primary-green border-2 border-primary-green rounded-sm px-2 py-1 transition-colors hover:bg-dark-primary-green hover:border-dark-primary-green'
+        >
+          Editar
+        </a>
+
+        <form action='/admin/produtos/deletar' method='POST' class='m-0'>
+          <input type='hidden' name='id' id='id' value='{{this.id}}' />
+          <input
+            type='submit'
+            value='Deletar'
+            class='text-white w-full bg-primary-red border-2 border-primary-red rounded-sm hover:cursor-pointer px-2 py-1 transition-colors hover:bg-dark-primary-red hover:border-dark-primary-red'
+          />
+        </form>
+      </div>
     </li>
   {{/each}}
-  <form action='/admin'>
-    <input type='submit' value='Voltar ao painel' />
-  </form>
 </ul>
+<a href='/admin' class='hover:text-dark-primary-green'>Voltar ao painel</a>

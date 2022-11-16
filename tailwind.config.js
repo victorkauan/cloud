@@ -8,7 +8,8 @@ module.exports = {
       colors: {
         'primary-green': '#3F8963',
         'dark-primary-green': '#27543D',
-        'primary-red': '#AC2626',
+        'primary-red': '#FF3838',
+        'dark-primary-red': '#AC2626',
       },
       minHeight: {
         16: '4rem',

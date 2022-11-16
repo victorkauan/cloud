@@ -525,6 +525,10 @@ video {
   margin: auto;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -536,6 +540,14 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .block {
@@ -550,6 +562,10 @@ video {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -560,6 +576,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -624,6 +644,11 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.border-primary-red {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 56 56 / var(--tw-border-opacity));
+}
+
 .bg-primary-green {
   --tw-bg-opacity: 1;
   background-color: rgb(63 137 99 / var(--tw-bg-opacity));
@@ -632,6 +657,11 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-primary-red {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 56 56 / var(--tw-bg-opacity));
 }
 
 .p-4 {
@@ -671,28 +701,8 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.pt-24 {
-  padding-top: 6rem;
-}
-
-.pb-6 {
-  padding-bottom: 1.5rem;
-}
-
-.pt-20 {
-  padding-top: 5rem;
-}
-
-.pt-32 {
-  padding-top: 8rem;
-}
-
 .pt-36 {
   padding-top: 9rem;
-}
-
-.pb-8 {
-  padding-bottom: 2rem;
 }
 
 .pb-4 {
@@ -779,6 +789,11 @@ video {
   border-color: rgb(39 84 61 / var(--tw-border-opacity));
 }
 
+.hover\:border-dark-primary-red:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(172 38 38 / var(--tw-border-opacity));
+}
+
 .hover\:bg-primary-green:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(63 137 99 / var(--tw-bg-opacity));
@@ -792,6 +807,11 @@ video {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-dark-primary-red:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(172 38 38 / var(--tw-bg-opacity));
 }
 
 .hover\:text-white:hover {
@@ -852,10 +872,6 @@ video {
 
   .\32xs\:text-left {
     text-align: left;
-  }
-
-  .\32xs\:text-center {
-    text-align: center;
   }
 }
 
