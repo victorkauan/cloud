@@ -1,10 +1,17 @@
-<h1>Lista de produtos:</h1>
-<ul>
+<h1 class='text-2xl font-bold'>Lista de produtos:</h1>
+<ul class='grid gap-2 pt-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
   {{#each products}}
-    <li>
-      <p>{{this.name}}</p>
-      <p>Preço: R$ {{this.price}}</p>
-      <p>Descrição: {{this.description}}</p>
+    <li class='border-2 border-dark-green rounded-md p-4 shadow'>
+      <p class='text-xl font-bold'>{{this.name}}</p>
+      <p>{{this.description}}</p>
+      <p class='font-bold text-2xl my-2'>{{this.formatted_price}}</p>
+      <a
+        href='/produtos/{{this.id}}'
+        class='font-bold w-full border-2 border-dark-green rounded-sm uppercase flex justify-center items-center gap-2 py-2 block transition duration-100 hover:text-white hover:bg-dark-green'
+      >
+        <i class='ri-shopping-cart-line text-lg'></i>
+        Comprar
+      </a>
     </li>
   {{/each}}
 </ul>

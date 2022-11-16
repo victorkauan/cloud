@@ -28,6 +28,19 @@ const cart = require('./routes/cart');
 app.get('/', (req, res) => {
   const products = getProducts();
 
+  const currencyFormat = {
+    minimumFractionDigits: 2,
+    style: 'currency',
+    currency: 'BRL',
+  };
+
+  products.forEach((product, index) => {
+    products[index]['formatted_price'] = Number(product.price).toLocaleString(
+      'pt-BR',
+      currencyFormat
+    );
+  });
+
   res.render('index', { products, title: 'Página Inicial' });
 });
 
