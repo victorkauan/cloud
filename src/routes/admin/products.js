@@ -6,7 +6,7 @@ const { getProducts, updateProducts } = require('../../utils/data');
 
 // Create
 router.get('/criar', (req, res) => {
-  res.render('admin/product/create_form', { title: 'ADM : Criar Produto' });
+  res.render('admin/product/createForm', { title: 'ADM : Criar Produto' });
 });
 
 router.post('/criar', (req, res) => {
@@ -49,7 +49,7 @@ router.get('/editar/:id', (req, res) => {
 
     if (parameter_id == id) {
       const { name, description, price, tag } = product;
-      res.render('admin/product/edit_form', {
+      res.render('admin/product/editForm', {
         id: parameter_id,
         name,
         description,
@@ -79,7 +79,7 @@ router.post('/editar', (req, res) => {
 
 // Delete
 router.get('/deletar', (req, res) => {
-  res.render('admin/product/delete_form', { title: 'ADM : Deletar Produto' });
+  res.render('admin/product/deleteForm', { title: 'ADM : Deletar Produto' });
 });
 
 router.post('/deletar', (req, res) => {

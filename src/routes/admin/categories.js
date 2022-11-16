@@ -6,7 +6,7 @@ const { getCategories, updateCategories } = require('../../utils/data');
 
 // Create
 router.get('/criar', (req, res) => {
-  res.render('admin/category/create_form', { title: 'ADM : Criar Categoria' });
+  res.render('admin/category/createForm', { title: 'ADM : Criar Categoria' });
 });
 
 router.post('/criar', (req, res) => {
@@ -45,7 +45,7 @@ router.get('/editar/:id', (req, res) => {
   categories.forEach((category) => {
     if (parameter_id === category.id) {
       const { id, name } = category;
-      res.render('admin/category/edit_form', {
+      res.render('admin/category/editForm', {
         id,
         name,
         title: 'ADM : Editar Categoria',
@@ -72,7 +72,7 @@ router.post('/editar', (req, res) => {
 
 // Delete
 router.get('/deletar', (req, res) => {
-  res.render('admin/category/delete_form', {
+  res.render('admin/category/deleteForm', {
     title: 'ADM : Deletar Categoria',
   });
 });

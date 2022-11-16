@@ -6,7 +6,11 @@
     <link rel='stylesheet' href='css/tailwind.css' />
     <title>{{title}}</title>
   </head>
-  <body class='text-lg'>
-    {{{body}}}
+  <body class="flex flex-col h-screen justify-between">
+    {{> navigationBar}}
+    <section class='w-full px-12 pt-20'>
+      {{{body}}}
+    </section>
+    {{> footer}}
   </body>
 </html>
