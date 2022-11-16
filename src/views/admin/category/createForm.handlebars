@@ -1,10 +1,25 @@
-<h1>Criar Categoria</h1>
-<form action='/admin/categorias/criar' method='POST'>
-  <label for='name'>Nome </label>
-  <input type='text' name='name' id='name' />
-  <br />
-  <input type='submit' value='Criar' />
-</form>
-<form action='/admin'>
-  <input type='submit' value='Voltar ao painel' />
-</form>
+<div
+  class='border-2 border-primary-green rounded-md p-4 m-auto shadow mmd:w-80 sm:w-96'
+>
+  <h1 class='font-bold text-2xl text-center pb-2'>Criar categoria</h1>
+  <form action='/admin/categorias/criar' method='POST' class='mb-2'>
+    <div class='flex flex-col mb-4'>
+      <label for='name' class='font-bold'>Nome </label>
+      <input
+        type='text'
+        name='name'
+        id='name'
+        required
+        class='bg-white border-2 border-primary-green rounded-sm outline-0 px-4 py-2 focus:shadow-md'
+      />
+    </div>
+    <div>
+      <input
+        type='submit'
+        value='Criar'
+        class='font-bold text-white w-full bg-primary-green border-2 border-primary-green rounded-sm p-2 transition-colors hover:text-white hover:bg-dark-primary-green hover:border-dark-primary-green hover:cursor-pointer'
+      />
+    </div>
+  </form>
+  <a href='/admin' class='hover:text-dark-primary-green'>Voltar ao painel</a>
+</div>

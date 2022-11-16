@@ -6,7 +6,7 @@ const { getCategories, updateCategories } = require('../../utils/data');
 
 // Create
 router.get('/criar', (req, res) => {
-  res.render('admin/category/createForm', { title: 'ADM : Criar Categoria' });
+  res.render('admin/category/createForm', { title: 'Admin: Criar Categoria' });
 });
 
 router.post('/criar', (req, res) => {
@@ -32,7 +32,7 @@ router.post('/criar', (req, res) => {
 router.get('/', (req, res) => {
   const categories = getCategories();
   res.render('admin/category/list', {
-    title: 'ADM : Listar Categorias',
+    title: 'Admin: Listar Categorias',
     categories,
   });
 });
@@ -48,7 +48,7 @@ router.get('/editar/:id', (req, res) => {
       res.render('admin/category/editForm', {
         id,
         name,
-        title: 'ADM : Editar Categoria',
+        title: 'Admin: Editar Categoria',
       });
     }
   });
@@ -73,7 +73,7 @@ router.post('/editar', (req, res) => {
 // Delete
 router.get('/deletar', (req, res) => {
   res.render('admin/category/deleteForm', {
-    title: 'ADM : Deletar Categoria',
+    title: 'Admin: Deletar Categoria',
   });
 });
 
