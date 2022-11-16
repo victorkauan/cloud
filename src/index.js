@@ -47,6 +47,6 @@ app.get('/', (req, res) => {
 app.use('/admin', admin); // - Admin
 app.use('/carrinho', cart); // - Shopping cart
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT ?? PORT, () => {
   console.log(`Server is running on port ${PORT}!`);
 });
