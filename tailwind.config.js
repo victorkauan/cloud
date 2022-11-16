@@ -6,14 +6,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'light-green': '#4AB087',
-        'dark-green': '#3F8963',
-        'primary-yellow': '#FED031',
+        'primary-green': '#3F8963',
+        'dark-primary-green': '#27543D',
         'primary-red': '#AC2626',
       },
+      minHeight: {
+        16: '4rem',
+      },
       screens: {
-        xs: '480px',
         mmd: '375px',
+        mlg: '425px',
+        '2xs': '500px',
+        xs: '575px',
       },
     },
   },

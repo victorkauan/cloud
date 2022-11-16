@@ -1,15 +1,15 @@
-<h1 class='text-2xl font-bold pb-2'>Lista de produtos:</h1>
+<h1 class='font-bold text-center text-2xl pb-2 2xs:text-left'>Lista de produtos:</h1>
 <ul
-  class='grid gap-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'
+  class='grid gap-2 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'
 >
   {{#each products}}
-    <li class='border-2 border-dark-green rounded-md p-4 shadow'>
+    <li class='border-2 border-primary-green rounded-md p-4 shadow'>
       <h2 class='text-xl font-bold'>{{this.name}}</h2>
       <p>{{this.description}}</p>
       <p class='font-bold text-2xl my-2'>{{this.formatted_price}}</p>
       <a
         href='/produtos/{{this.id}}'
-        class='font-bold uppercase w-full border-2 border-dark-green rounded-sm flex justify-center items-center gap-2 py-2 block transition-colors hover:text-white hover:bg-dark-green'
+        class='font-bold uppercase w-full border-2 border-primary-green rounded-sm flex justify-center items-center gap-2 py-2 block transition-colors hover:text-white hover:bg-primary-green'
       >
         <i class='ri-shopping-cart-line text-lg'></i>
         Comprar

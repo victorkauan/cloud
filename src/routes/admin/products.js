@@ -2,16 +2,25 @@
 const express = require('express');
 const router = express.Router();
 // - Data functions
-const { getProducts, updateProducts } = require('../../utils/data');
+const {
+  getProducts,
+  updateProducts,
+  getCategories,
+} = require('../../utils/data');
 
 // Create
 router.get('/criar', (req, res) => {
-  res.render('admin/product/createForm', { title: 'ADM : Criar Produto' });
+  const categories = getCategories();
+
+  res.render('admin/product/createForm', {
+    title: 'ADM : Criar Produto',
+    categories,
+  });
 });
 
 router.post('/criar', (req, res) => {
   const products = getProducts();
-  const { name, description, price, tag } = req.body;
+  const { name, description, price, category } = req.body;
 
   const newId = Number(products[products.length - 1].id) + 1;
   const newProduct = {
@@ -19,7 +28,7 @@ router.post('/criar', (req, res) => {
     name,
     description,
     price,
-    tag,
+    // category,
   };
 
   const newProducts = [...products];
