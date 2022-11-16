@@ -16,7 +16,7 @@
     <div class='flex flex-col mb-2'>
       <label for='price' class='font-bold'>Preço</label>
       <input
-        type='number'
+        type='text'
         name='price'
         id='price'
         required
@@ -28,17 +28,19 @@
       <textarea
         name='description'
         id='description'
+        required
         class='min-h-16 border-2 border-primary-green rounded-sm outline-0 px-4 py-2 focus:shadow-md'
       ></textarea>
     </div>
     <div class='flex flex-col mb-4'>
-      <label for='category' class='font-bold'>Categoria</label>
+      <label for='category_id' class='font-bold'>Categoria</label>
       <select
-        name='category'
-        id='category'
+        name='category_id'
+        id='category_id'
+        required
         class='bg-white border-2 border-primary-green rounded-sm outline-0 px-4 py-2 focus:shadow-md'
       >
-        <option value='' selected></option>
+        <option value='' disabled selected></option>
         {{#each categories}}
           <option value='{{this.id}}'>{{this.name}}</option>
         {{/each}}

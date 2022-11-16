@@ -13,14 +13,14 @@ router.get('/criar', (req, res) => {
   const categories = getCategories();
 
   res.render('admin/product/createForm', {
-    title: 'ADM : Criar Produto',
+    title: 'Admin: Criar Produto',
     categories,
   });
 });
 
 router.post('/criar', (req, res) => {
   const products = getProducts();
-  const { name, description, price, category } = req.body;
+  const { name, description, price, category_id: categoryId } = req.body;
 
   const newId = Number(products[products.length - 1].id) + 1;
   const newProduct = {
@@ -28,7 +28,7 @@ router.post('/criar', (req, res) => {
     name,
     description,
     price,
-    // category,
+    category_id: categoryId,
   };
 
   const newProducts = [...products];
@@ -42,6 +42,7 @@ router.post('/criar', (req, res) => {
 // Read
 router.get('/', (req, res) => {
   const products = getProducts();
+  const categories = getCategories();
 
   const currencyFormat = {
     minimumFractionDigits: 2,
@@ -50,6 +51,13 @@ router.get('/', (req, res) => {
   };
 
   products.forEach((product, index) => {
+    const { category_id: categoryId } = product;
+    categories.forEach((category) => {
+      if (categoryId === category.id) {
+        products[index]['category_name'] = category.name;
+      }
+    });
+
     products[index]['formatted_price'] = Number(product.price).toLocaleString(
       'pt-BR',
       currencyFormat
@@ -57,7 +65,7 @@ router.get('/', (req, res) => {
   });
 
   res.render('admin/product/list', {
-    title: 'ADM : Listar Produtos',
+    title: 'Admin: Listar Produtos',
     products,
   });
 });
@@ -65,20 +73,27 @@ router.get('/', (req, res) => {
 // Update
 router.get('/editar/:id', (req, res) => {
   const products = getProducts();
-  const { id: parameter_id } = req.params;
+  const { id: parameterId } = req.params;
+
+  const categories = getCategories();
 
   products.forEach((product) => {
     const { id } = product;
 
-    if (parameter_id == id) {
-      const { name, description, price, tag } = product;
+    if (parameterId === id) {
+      const { name, description, price, category_id: categoryId } = product;
+
+      for (let i = 0; i < categories.length; i += 1) {
+        categories[i]['selected'] = categories[i].id === categoryId;
+      }
+
       res.render('admin/product/editForm', {
-        id: parameter_id,
+        id: parameterId,
         name,
         description,
         price,
-        tag,
-        title: 'ADM : Editar Produto',
+        categories,
+        title: 'Admin: Editar Produto',
       });
     }
   });
@@ -86,12 +101,18 @@ router.get('/editar/:id', (req, res) => {
 
 router.post('/editar', (req, res) => {
   const products = getProducts();
-  const { id, name, description, price, tag } = req.body;
+  const { id, name, description, price, category_id: categoryId } = req.body;
 
   const newProducts = [...products];
   newProducts.forEach((product, index) => {
     if (id === product.id) {
-      newProducts[index] = { id, name, description, price, tag };
+      newProducts[index] = {
+        id,
+        name,
+        description,
+        price,
+        category_id: categoryId,
+      };
 
       updateProducts(newProducts, 'update');
     }
@@ -102,7 +123,7 @@ router.post('/editar', (req, res) => {
 
 // Delete
 router.get('/deletar', (req, res) => {
-  res.render('admin/product/deleteForm', { title: 'ADM : Deletar Produto' });
+  res.render('admin/product/deleteForm', { title: 'Admin: Deletar Produto' });
 });
 
 router.post('/deletar', (req, res) => {
