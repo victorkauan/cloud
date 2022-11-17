@@ -6,6 +6,10 @@ const PORT = 3001;
 const { engine } = require('express-handlebars');
 // - Path
 const path = require('path');
+// - Express session
+const session = require('express-session');
+// - Secret
+const authConfig = require('./config/auth.json');
 // - Data functions
 const { getProducts } = require('./utils/data');
 
@@ -20,14 +24,29 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 // - Form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// - Session
+app.use(
+  session({
+    secret: authConfig.secret,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Middlewares
+// - Global variables
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
 
 // Routes
 const auth = require('./routes/auth');
 const admin = require('./routes/admin');
 const cart = require('./routes/cart');
 
-app.get('/', (req, res) => {
-  const products = getProducts();
+app.get('/', async (req, res) => {
+  const products = await getProducts();
 
   const currencyFormat = {
     minimumFractionDigits: 2,
@@ -42,7 +61,7 @@ app.get('/', (req, res) => {
     );
   });
 
-  res.render('index', { products, title: 'Fit Shop' });
+  return res.render('index', { products, title: 'Fit Shop' });
 });
 
 app.use('/conta', auth); // - Authentication
@@ -50,5 +69,5 @@ app.use('/admin', admin); // - Admin
 app.use('/carrinho', cart); // - Shopping cart
 
 app.listen(process.env.PORT ?? PORT, () => {
-  console.log(`Server is running on port ${PORT}!`);
+  return console.log(`Server is running on port ${PORT}!`);
 });

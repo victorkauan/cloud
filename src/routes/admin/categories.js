@@ -6,17 +6,17 @@ const { getCategories, updateCategories } = require('../../utils/data');
 
 // Create
 router.get('/criar', (req, res) => {
-  res.render('admin/category/createForm', { title: 'Admin: Criar Categoria' });
+  return res.render('admin/category/createForm', {
+    title: 'Admin: Criar Categoria',
+  });
 });
 
-router.post('/criar', (req, res) => {
-  const categories = getCategories();
+router.post('/criar', async (req, res) => {
+  const categories = await getCategories();
   const categoryName = req.body.name;
 
-  const newId = Number(categories[categories.length - 1].id) + 1;
-
   const newCategory = {
-    id: String(newId),
+    id: String(Number(categories[categories.length - 1].id) + 1),
     name: categoryName,
   };
 
@@ -25,21 +25,21 @@ router.post('/criar', (req, res) => {
 
   updateCategories(newCategories, 'create');
 
-  res.redirect('/admin/categorias');
+  return res.redirect('/admin/categorias');
 });
 
 // Read
-router.get('/', (req, res) => {
-  const categories = getCategories();
-  res.render('admin/category/list', {
+router.get('/', async (req, res) => {
+  const categories = await getCategories();
+  return res.render('admin/category/list', {
     title: 'Admin: Listar Categorias',
     categories,
   });
 });
 
 // Update
-router.get('/editar/:id', (req, res) => {
-  const categories = getCategories();
+router.get('/editar/:id', async (req, res) => {
+  const categories = await getCategories();
   const { id: parameter_id } = req.params;
 
   categories.forEach((category) => {
@@ -54,8 +54,8 @@ router.get('/editar/:id', (req, res) => {
   });
 });
 
-router.post('/editar', (req, res) => {
-  const categories = getCategories();
+router.post('/editar', async (req, res) => {
+  const categories = await getCategories();
   const { id, name } = req.body;
 
   const newCategories = [...categories];
@@ -67,25 +67,25 @@ router.post('/editar', (req, res) => {
     }
   });
 
-  res.redirect('/admin/categorias');
+  return res.redirect('/admin/categorias');
 });
 
 // Delete
 router.get('/deletar', (req, res) => {
-  res.render('admin/category/deleteForm', {
+  return res.render('admin/category/deleteForm', {
     title: 'Admin: Deletar Categoria',
   });
 });
 
-router.post('/deletar', (req, res) => {
-  const categories = getCategories();
+router.post('/deletar', async (req, res) => {
+  const categories = await getCategories();
   const { id } = req.body;
 
   const newCategories = categories.filter((category) => id !== category.id);
 
   updateCategories(newCategories, 'delete');
 
-  res.redirect('/admin/categorias');
+  return res.redirect('/admin/categorias');
 });
 
 module.exports = router;

@@ -2,12 +2,17 @@
 const express = require('express');
 const router = express.Router();
 
+// Middlewares
+const authMiddleware = require('../../middlewares/auth');
+
+router.use(authMiddleware);
+
 // Routes
 const products = require('./products');
 const categories = require('./categories');
 
 router.get('/', (req, res) => {
-  res.render('admin/panel', { title: 'Painel Administrativo' });
+  return res.render('admin/panel', { title: 'Painel Administrativo' });
 });
 
 router.use('/produtos', products); // Products

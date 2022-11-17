@@ -9,22 +9,21 @@ const {
 } = require('../../utils/data');
 
 // Create
-router.get('/criar', (req, res) => {
-  const categories = getCategories();
+router.get('/criar', async (req, res) => {
+  const categories = await getCategories();
 
-  res.render('admin/product/createForm', {
+  return res.render('admin/product/createForm', {
     title: 'Admin: Criar Produto',
     categories,
   });
 });
 
-router.post('/criar', (req, res) => {
-  const products = getProducts();
+router.post('/criar', async (req, res) => {
+  const products = await getProducts();
   const { name, description, price, category_id: categoryId } = req.body;
 
-  const newId = Number(products[products.length - 1].id) + 1;
   const newProduct = {
-    id: String(newId),
+    id: String(Number(products[products.length - 1].id) + 1),
     name,
     description,
     price,
@@ -36,13 +35,13 @@ router.post('/criar', (req, res) => {
 
   updateProducts(newProducts, 'create');
 
-  res.redirect('/admin/produtos');
+  return res.redirect('/admin/produtos');
 });
 
 // Read
-router.get('/', (req, res) => {
-  const products = getProducts();
-  const categories = getCategories();
+router.get('/', async (req, res) => {
+  const products = await getProducts();
+  const categories = await getCategories();
 
   const currencyFormat = {
     minimumFractionDigits: 2,
@@ -64,18 +63,18 @@ router.get('/', (req, res) => {
     );
   });
 
-  res.render('admin/product/list', {
+  return res.render('admin/product/list', {
     title: 'Admin: Listar Produtos',
     products,
   });
 });
 
 // Update
-router.get('/editar/:id', (req, res) => {
-  const products = getProducts();
-  const { id: parameterId } = req.params;
+router.get('/editar/:id', async (req, res) => {
+  const products = await getProducts();
+  const categories = await getCategories();
 
-  const categories = getCategories();
+  const { id: parameterId } = req.params;
 
   products.forEach((product) => {
     const { id } = product;
@@ -99,8 +98,8 @@ router.get('/editar/:id', (req, res) => {
   });
 });
 
-router.post('/editar', (req, res) => {
-  const products = getProducts();
+router.post('/editar', async (req, res) => {
+  const products = await getProducts();
   const { id, name, description, price, category_id: categoryId } = req.body;
 
   const newProducts = [...products];
@@ -118,23 +117,25 @@ router.post('/editar', (req, res) => {
     }
   });
 
-  res.redirect('/admin/produtos');
+  return res.redirect('/admin/produtos');
 });
 
 // Delete
 router.get('/deletar', (req, res) => {
-  res.render('admin/product/deleteForm', { title: 'Admin: Deletar Produto' });
+  return res.render('admin/product/deleteForm', {
+    title: 'Admin: Deletar Produto',
+  });
 });
 
-router.post('/deletar', (req, res) => {
-  const products = getProducts();
+router.post('/deletar', async (req, res) => {
+  const products = await getProducts();
   const { id } = req.body;
 
   let newProducts = products.filter((product) => id !== product.id);
 
   updateProducts(newProducts, 'delete');
 
-  res.redirect('/admin/produtos');
+  return res.redirect('/admin/produtos');
 });
 
 module.exports = router;

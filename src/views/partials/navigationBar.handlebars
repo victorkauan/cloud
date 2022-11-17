@@ -24,22 +24,24 @@
       </ul>
     </div>
     <ul class='flex flex-col-reverse flex-wrap gap-2 xs:flex-row xs:gap-4'>
-      <li>
-        <a
-          href='/conta/entrar'
-          class='bg-white text-primary-green border-2 border-white rounded-sm px-2 py-1 block transition-colors hover:text-white hover:bg-dark-primary-green hover:border-dark-primary-green'
-        >
-          Entrar
-        </a>
-      </li>
-      <li>
-        <a
-          href='/conta/cadastrar'
-          class='border-2 border-white rounded-sm px-2 py-1 block transition-colors hover:text-primary-green hover:bg-white'
-        >
-          Cadastrar
-        </a>
-      </li>
+      {{#if user}}{{else}}
+        <li>
+          <a
+            href='/conta/entrar'
+            class='bg-white text-primary-green border-2 border-white rounded-sm px-2 py-1 block transition-colors hover:text-white hover:bg-dark-primary-green hover:border-dark-primary-green'
+          >
+            Entrar
+          </a>
+        </li>
+        <li>
+          <a
+            href='/conta/cadastrar'
+            class='border-2 border-white rounded-sm px-2 py-1 block transition-colors hover:text-primary-green hover:bg-white'
+          >
+            Cadastrar
+          </a>
+        </li>
+      {{/if}}
     </ul>
   </div>
 </nav>
