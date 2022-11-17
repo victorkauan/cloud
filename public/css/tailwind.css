@@ -1113,14 +1113,14 @@ select:focus {
   background-color: rgb(63 137 99 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-dark-primary-green:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(39 84 61 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-dark-primary-green:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(39 84 61 / var(--tw-bg-opacity));
 }
 
 .hover\:text-white:hover {

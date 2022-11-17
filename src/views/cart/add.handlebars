@@ -1,12 +1,20 @@
-<form action='/carrinho/adicionar' method='POST'>
-  <label for='user_id'>Email </label>
-  <input type='text' name='user_id' id='user_id' />
-  <br />
-  <label for='id'>ID </label>
-  <input type='text' name='id' id='id' />
-  <br />
-  <label for='quantity'>Quantidade </label>
-  <input type='text' name='quantity' id='quantity' />
-  <br />
-  <input type='submit' value='Adicionar' />
-</form>
+<div class='form-card'>
+  <h1 class='form-title'>Adicionar ao carrinho</h1>
+  <form action='/carrinho/adicionar' method='POST'>
+    <div class='input-group mb-2'>
+      <label for='user_id'>ID do usuário</label>
+      <input type='text' name='user_id' id='user_id' />
+    </div>
+    <div class='input-group mb-2'>
+      <label for='id'>ID do produto</label>
+      <input type='text' name='id' id='id' />
+    </div>
+    <div class='input-group mb-4'>
+      <label for='quantity'>Quantidade</label>
+      <input type='text' name='quantity' id='quantity' />
+    </div>
+    <div>
+      <input type='submit' value='Adicionar' class='form-submit' />
+    </div>
+  </form>
+</div>

@@ -1,31 +1,31 @@
 // - Express
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+// - Data functions
+const { getCarts, updateCarts } = require('../utils/data');
 
-// - Application paths
-const { paths } = require("../utils/paths");
-
-// - Update data
-const { updateCarts } = require("../utils/data");
-
-router.get("/adicionar", (req, res) => {
-  res.render("cart/add", { title: "Carrinho" });
+router.get('/adicionar', (req, res) => {
+  return res.render('cart/add', { title: 'Carrinho' });
 });
 
-router.post("/adicionar", (req, res) => {
-  const carts = require(paths.carts);
+router.post('/adicionar', async (req, res) => {
+  const carts = await getCarts();
+  const newCarts = [...carts];
+
   const cart = {
     user_id: req.body.user_id,
     products: [{ id: req.body.id, quantity: req.body.quantity }],
   };
-  const newCarts = [...carts];
+
   newCarts.push(cart);
-  updateCarts(newCarts, "create");
-  res.redirect("/carrinho");
+
+  updateCarts(newCarts, 'create');
+
+  return res.redirect('/carrinho');
 });
 
-router.get("/", (req, res) => {
-  res.send("carrinho");
+router.get('/', (req, res) => {
+  return res.send('Carrinho de compras!');
 });
 
 module.exports = router;

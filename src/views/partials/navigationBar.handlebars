@@ -24,7 +24,7 @@
       </ul>
     </div>
     <ul
-      class='flex items-center flex-col-reverse flex-wrap gap-2 xs:flex-row xs:gap-4'
+      class='flex justify-center items-center {{#if user}}{{else}}flex-col-reverse{{/if}} flex-wrap gap-2 xs:flex-row xs:gap-4'
     >
       {{#if user}}
         <li>
