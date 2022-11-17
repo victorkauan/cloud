@@ -23,8 +23,28 @@
         </li>
       </ul>
     </div>
-    <ul class='flex flex-col-reverse flex-wrap gap-2 xs:flex-row xs:gap-4'>
-      {{#if user}}{{else}}
+    <ul
+      class='flex items-center flex-col-reverse flex-wrap gap-2 xs:flex-row xs:gap-4'
+    >
+      {{#if user}}
+        <li>
+          <p>
+            Olá,
+            <a
+              href='/conta/perfil'
+              class='font-bold transition-colors hover:text-dark-primary-green'
+            >{{user.first_name}}</a>
+          </p>
+        </li>
+        <li>
+          <a
+            href='/conta/sair'
+            class='border-2 border-white rounded-sm px-2 py-1 block transition-colors hover:text-primary-green hover:bg-white'
+          >
+            Sair
+          </a>
+        </li>
+      {{else}}
         <li>
           <a
             href='/conta/entrar'

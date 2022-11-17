@@ -36,16 +36,20 @@ router.post('/cadastrar', async (req, res) => {
   // Encrypt password
   const hash = await bcrypt.hash(password, 10);
 
-  newUsers.push({
+  const newUser = {
     id: String(Number(newUsers[newUsers.length - 1].id) + 1),
     email,
     password: hash,
     first_name: firstName,
     last_name: lastName,
     is_admin: String(false),
-  });
+  };
+  newUsers.push(newUser);
 
   updateUsers(newUsers, 'create');
+
+  req.session.user = newUser;
+  req.session.authorization = `Bearer ${generateToken(newUser.id)}`;
 
   return res.redirect('/');
 });
@@ -73,6 +77,17 @@ router.post('/entrar', async (req, res) => {
   req.session.authorization = `Bearer ${generateToken(userFound.id)}`;
 
   return res.redirect('/');
+});
+
+// Logout
+router.get('/sair', (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      return res.redirect('/');
+    }
+
+    return res.redirect('/');
+  });
 });
 
 module.exports = router;
