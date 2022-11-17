@@ -5,7 +5,6 @@
         "password": "password00",
         "first_name": "First name 00",
         "last_name": "Last name 00",
-        "gender": "male",
         "is_admin": "false"
     },
     {
@@ -14,7 +13,6 @@
         "password": "password01",
         "first_name": "First name 01",
         "last_name": "Last name 01",
-        "gender": "male",
         "is_admin": "false"
     },
     {
@@ -23,7 +21,6 @@
         "password": "password02",
         "first_name": "First name 02",
         "last_name": "Last name 02",
-        "gender": "female",
         "is_admin": "false"
     },
     {
@@ -32,7 +29,6 @@
         "password": "password03",
         "first_name": "First name 03",
         "last_name": "Last name 03",
-        "gender": "male",
         "is_admin": "false"
     },
     {
@@ -41,7 +37,6 @@
         "password": "password04",
         "first_name": "First name 04",
         "last_name": "Last name 04",
-        "gender": "female",
         "is_admin": "false"
     },
     {
@@ -50,7 +45,6 @@
         "password": "password05",
         "first_name": "First name 05",
         "last_name": "Last name 05",
-        "gender": "male",
         "is_admin": "true"
     },
     {
@@ -59,7 +53,6 @@
         "password": "password06",
         "first_name": "First name 06",
         "last_name": "Last name 06",
-        "gender": "female",
         "is_admin": "true"
     },
     {
@@ -68,7 +61,6 @@
         "password": "password07",
         "first_name": "First name 07",
         "last_name": "Last name 07",
-        "gender": "female",
         "is_admin": "true"
     },
     {
@@ -77,7 +69,6 @@
         "password": "password08",
         "first_name": "First name 08",
         "last_name": "Last name 08",
-        "gender": "female",
         "is_admin": "true"
     },
     {
@@ -86,7 +77,6 @@
         "password": "password09",
         "first_name": "First name 09",
         "last_name": "Last name 09",
-        "gender": "female",
         "is_admin": "true"
     }
 ]

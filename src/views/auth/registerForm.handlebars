@@ -1,0 +1,47 @@
+<div class='form-card'>
+  <h1 class='form-title'>Criar conta</h1>
+  <form action='/conta/cadastrar' method='POST'>
+    <div class='flex flex-col gap-2 mb-2 sm:flex-row sm:gap-1'>
+      <div class='input-group'>
+        <label for='first_name'>Nome</label>
+        <input
+          type='text'
+          name='first_name'
+          id='first_name'
+          required
+          class='w-full'
+        />
+      </div>
+      <div class='input-group'>
+        <label for='last_name'>Sobrenome</label>
+        <input
+          type='text'
+          name='last_name'
+          id='last_name'
+          required
+          class='w-full'
+        />
+      </div>
+    </div>
+    <div class='input-group mb-2'>
+      <label for='email'>E-mail</label>
+      <input type='email' name='email' id='email' required />
+    </div>
+    <div class='input-group mb-4'>
+      <label for='password'>Senha</label>
+      <input type='password' name='password' id='password' required />
+    </div>
+    {{! <div class='input-group mb-4'>
+      <label for='password_verification'>Confirmação de senha</label>
+      <input
+        type='password'
+        name='password_verification'
+        id='password_verification'
+        required
+      />
+    </div> }}
+    <div>
+      <input type='submit' value='Criar conta' class='form-submit' />
+    </div>
+  </form>
+</div>

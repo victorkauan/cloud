@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+const auth = require('./routes/auth');
 const admin = require('./routes/admin');
 const cart = require('./routes/cart');
 
@@ -41,9 +42,10 @@ app.get('/', (req, res) => {
     );
   });
 
-  res.render('index', { products, title: 'Página Inicial' });
+  res.render('index', { products, title: 'Fit Shop' });
 });
 
+app.use('/conta', auth); // - Authentication
 app.use('/admin', admin); // - Admin
 app.use('/carrinho', cart); // - Shopping cart
 

@@ -1,27 +1,15 @@
-<div
-  class='border-2 border-primary-green rounded-md p-4 m-auto shadow mmd:w-80 sm:w-96'
->
-  <h1 class='font-bold text-2xl text-center pb-2'>Deletar produto</h1>
-  <form action='/admin/produtos/deletar' method='POST' class='mb-2'>
-    <div class='flex flex-col mb-4'>
-      <label for='id' class='font-bold'>ID </label>
-      <input
-        type='text'
-        name='id'
-        id='id'
-        required
-        class='border-2 border-primary-green rounded-sm outline-0 px-4 py-2 focus:shadow-md'
-      />
+<div class='form-card'>
+  <h1 class='form-title'>Deletar produto</h1>
+  <form action='/admin/produtos/deletar' method='POST'>
+    <div class='input-group mb-4'>
+      <label for='id'>ID</label>
+      <input type='text' name='id' id='id' required />
     </div>
     <div>
-      <input
-        type='submit'
-        value='Deletar'
-        class='font-bold text-white w-full bg-primary-green border-2 border-primary-green rounded-sm p-2 transition-colors hover:text-white hover:bg-dark-primary-green hover:border-dark-primary-green hover:cursor-pointer'
-      />
+      <input type='submit' value='Deletar' class='form-submit' />
     </div>
   </form>
-  <a href='/admin' class='hover:text-dark-primary-green'>
+  <a href='/admin' class='back-link'>
     Voltar ao painel
   </a>
 </div>

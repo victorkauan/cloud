@@ -1,45 +1,21 @@
-<div
-  class='border-2 border-primary-green rounded-md p-4 m-auto shadow mmd:w-80 sm:w-96'
->
-  <h1 class='font-bold text-2xl text-center pb-2'>Criar produto</h1>
-  <form action='/admin/produtos/criar' method='POST' class='mb-2'>
-    <div class='flex flex-col mb-2'>
-      <label for='name' class='font-bold'>Nome</label>
-      <input
-        type='text'
-        name='name'
-        id='name'
-        required
-        class='border-2 border-primary-green rounded-sm outline-0 px-4 py-2 focus:shadow-md'
-      />
+<div class='form-card'>
+  <h1 class='form-title'>Criar produto</h1>
+  <form action='/admin/produtos/criar' method='POST'>
+    <div class='input-group mb-2'>
+      <label for='name'>Nome</label>
+      <input type='text' name='name' id='name' required />
     </div>
-    <div class='flex flex-col mb-2'>
-      <label for='price' class='font-bold'>Preço</label>
-      <input
-        type='text'
-        name='price'
-        id='price'
-        required
-        class='border-2 border-primary-green rounded-sm outline-0 px-4 py-2 focus:shadow-md'
-      />
+    <div class='input-group mb-2'>
+      <label for='price'>Preço</label>
+      <input type='text' name='price' id='price' required />
     </div>
-    <div class='flex flex-col mb-2'>
-      <label for='description' class='font-bold'>Descrição</label>
-      <textarea
-        name='description'
-        id='description'
-        required
-        class='min-h-16 border-2 border-primary-green rounded-sm outline-0 px-4 py-2 focus:shadow-md'
-      ></textarea>
+    <div class='input-group mb-2'>
+      <label for='description'>Descrição</label>
+      <textarea name='description' id='description' required></textarea>
     </div>
-    <div class='flex flex-col mb-4'>
-      <label for='category_id' class='font-bold'>Categoria</label>
-      <select
-        name='category_id'
-        id='category_id'
-        required
-        class='bg-white border-2 border-primary-green rounded-sm outline-0 px-4 py-2 focus:shadow-md'
-      >
+    <div class='input-group mb-4'>
+      <label for='category_id'>Categoria</label>
+      <select name='category_id' id='category_id' required>
         <option value='' disabled selected></option>
         {{#each categories}}
           <option value='{{this.id}}'>{{this.name}}</option>
@@ -47,14 +23,10 @@
       </select>
     </div>
     <div>
-      <input
-        type='submit'
-        value='Criar'
-        class='font-bold text-white w-full bg-primary-green border-2 border-primary-green rounded-sm p-2 transition-colors hover:text-white hover:bg-dark-primary-green hover:border-dark-primary-green hover:cursor-pointer'
-      />
+      <input type='submit' value='Criar' class='form-submit' />
     </div>
   </form>
-  <a href='/admin' class='hover:text-dark-primary-green'>
+  <a href='/admin' class='back-link'>
     Voltar ao painel
   </a>
 </div>
