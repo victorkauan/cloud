@@ -40,4 +40,9 @@ router.post('/cadastrar', async (req, res) => {
   res.redirect('/');
 });
 
+// Authenticate
+router.get('/entrar', (req, res) => {
+  res.render('auth/authenticateForm', { title: 'Entrar' });
+});
+
 module.exports = router;
