@@ -2,14 +2,14 @@
 const express = require('express');
 const router = express.Router();
 // - Data functions
-const { getCarts, updateCarts } = require('../utils/data');
+const { mockData } = require('../services/mockData');
 
 router.get('/adicionar', (req, res) => {
   return res.render('cart/add', { title: 'Carrinho' });
 });
 
 router.post('/adicionar', async (req, res) => {
-  const carts = await getCarts();
+  const carts = await mockData.get.carts();
   const newCarts = [...carts];
 
   const cart = {
@@ -19,7 +19,7 @@ router.post('/adicionar', async (req, res) => {
 
   newCarts.push(cart);
 
-  updateCarts(newCarts, 'create');
+  mockData.update.carts(newCarts, 'create');
 
   return res.redirect('/carrinho');
 });

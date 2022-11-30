@@ -2,15 +2,11 @@
 const express = require('express');
 const router = express.Router();
 // - Data functions
-const {
-  getProducts,
-  updateProducts,
-  getCategories,
-} = require('../../utils/data');
+const { mockData } = require('../../services/mockData');
 
 // Create
 router.get('/criar', async (req, res) => {
-  const categories = await getCategories();
+  const categories = await mockData.get.categories();
 
   return res.render('admin/product/createForm', {
     title: 'Admin: Criar Produto',
@@ -19,7 +15,7 @@ router.get('/criar', async (req, res) => {
 });
 
 router.post('/criar', async (req, res) => {
-  const products = await getProducts();
+  const products = await mockData.get.products();
   const { name, description, price, category_id: categoryId } = req.body;
 
   const newProduct = {
@@ -33,15 +29,15 @@ router.post('/criar', async (req, res) => {
   const newProducts = [...products];
   newProducts.push(newProduct);
 
-  updateProducts(newProducts, 'create');
+  mockData.update.products(newProducts, 'create');
 
   return res.redirect('/admin/produtos');
 });
 
 // Read
 router.get('/', async (req, res) => {
-  const products = await getProducts();
-  const categories = await getCategories();
+  const products = await mockData.get.products();
+  const categories = await mockData.get.categories();
 
   const currencyFormat = {
     minimumFractionDigits: 2,
@@ -71,8 +67,8 @@ router.get('/', async (req, res) => {
 
 // Update
 router.get('/editar/:id', async (req, res) => {
-  const products = await getProducts();
-  const categories = await getCategories();
+  const products = await mockData.get.products();
+  const categories = await mockData.get.categories();
 
   const { id: parameterId } = req.params;
 
@@ -99,7 +95,7 @@ router.get('/editar/:id', async (req, res) => {
 });
 
 router.post('/editar', async (req, res) => {
-  const products = await getProducts();
+  const products = await mockData.get.products();
   const { id, name, description, price, category_id: categoryId } = req.body;
 
   const newProducts = [...products];
@@ -113,7 +109,7 @@ router.post('/editar', async (req, res) => {
         category_id: categoryId,
       };
 
-      updateProducts(newProducts, 'update');
+      mockData.update.products(newProducts, 'update');
     }
   });
 
@@ -128,12 +124,12 @@ router.get('/deletar', (req, res) => {
 });
 
 router.post('/deletar', async (req, res) => {
-  const products = await getProducts();
+  const products = await mockData.get.products();
   const { id } = req.body;
 
   let newProducts = products.filter((product) => id !== product.id);
 
-  updateProducts(newProducts, 'delete');
+  mockData.update.products(newProducts, 'delete');
 
   return res.redirect('/admin/produtos');
 });
