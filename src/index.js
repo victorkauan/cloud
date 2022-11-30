@@ -9,9 +9,13 @@ const path = require('path');
 // - Express session
 const session = require('express-session');
 // - Secret
-const authConfig = require('./config/auth.json');
+const authConfig = require('./configuration/auth.json');
 // - Data functions
-const { getProducts } = require('./utils/data');
+const { mockData } = require('./services/mockData');
+// - Routes
+const auth = require('./routes/auth');
+const admin = require('./routes/admin');
+const cart = require('./routes/cart');
 
 // Configurations
 // - Handlebars
@@ -41,12 +45,8 @@ app.use((req, res, next) => {
 });
 
 // Routes
-const auth = require('./routes/auth');
-const admin = require('./routes/admin');
-const cart = require('./routes/cart');
-
 app.get('/', async (req, res) => {
-  const products = await getProducts();
+  const products = await mockData.get.products();
 
   const currencyFormat = {
     minimumFractionDigits: 2,

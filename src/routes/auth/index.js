@@ -6,9 +6,9 @@ const bcrypt = require('bcryptjs');
 // - JSONWebToken
 const jwt = require('jsonwebtoken');
 // - Data functions
-const { getUsers, updateUsers } = require('../../utils/data');
+const { mockData } = require('../../services/mockData');
 // - Secret
-const authConfig = require('../../config/auth.json');
+const authConfig = require('../../configuration/auth.json');
 
 function generateToken(id) {
   return jwt.sign({ id }, authConfig.secret, {
@@ -30,7 +30,7 @@ router.post('/cadastrar', async (req, res) => {
     // password_verification: passwordVerification,
   } = req.body;
 
-  const users = await getUsers();
+  const users = await mockData.get.users();
   const newUsers = [...users];
 
   // Encrypt password
@@ -46,7 +46,7 @@ router.post('/cadastrar', async (req, res) => {
   };
   newUsers.push(newUser);
 
-  updateUsers(newUsers, 'create');
+  mockData.update.users(newUsers, 'create');
 
   req.session.user = newUser;
   req.session.authorization = `Bearer ${generateToken(newUser.id)}`;
@@ -60,7 +60,7 @@ router.get('/entrar', (req, res) => {
 });
 
 router.post('/entrar', async (req, res) => {
-  const users = await getUsers();
+  const users = await mockData.get.users();
   const { email, password } = req.body;
 
   const userFound = users.find((user) => email === user.email);

@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 // - Data functions
-const { getCategories, updateCategories } = require('../../utils/data');
+const { mockData } = require('../../services/mockData');
 
 // Create
 router.get('/criar', (req, res) => {
@@ -12,7 +12,7 @@ router.get('/criar', (req, res) => {
 });
 
 router.post('/criar', async (req, res) => {
-  const categories = await getCategories();
+  const categories = await mockData.get.categories();
   const categoryName = req.body.name;
 
   const newCategory = {
@@ -23,14 +23,14 @@ router.post('/criar', async (req, res) => {
   const newCategories = [...categories];
   newCategories.push(newCategory);
 
-  updateCategories(newCategories, 'create');
+  mockData.update.categories(newCategories, 'create');
 
   return res.redirect('/admin/categorias');
 });
 
 // Read
 router.get('/', async (req, res) => {
-  const categories = await getCategories();
+  const categories = await mockData.get.categories();
   return res.render('admin/category/list', {
     title: 'Admin: Listar Categorias',
     categories,
@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
 
 // Update
 router.get('/editar/:id', async (req, res) => {
-  const categories = await getCategories();
+  const categories = await mockData.get.categories();
   const { id: parameter_id } = req.params;
 
   categories.forEach((category) => {
@@ -55,7 +55,7 @@ router.get('/editar/:id', async (req, res) => {
 });
 
 router.post('/editar', async (req, res) => {
-  const categories = await getCategories();
+  const categories = await mockData.get.categories();
   const { id, name } = req.body;
 
   const newCategories = [...categories];
@@ -63,7 +63,7 @@ router.post('/editar', async (req, res) => {
     if (id === category.id) {
       newCategories[index] = { id, name };
 
-      updateCategories(newCategories, 'update');
+      mockData.update.categories(newCategories, 'update');
     }
   });
 
@@ -78,12 +78,12 @@ router.get('/deletar', (req, res) => {
 });
 
 router.post('/deletar', async (req, res) => {
-  const categories = await getCategories();
+  const categories = await mockData.get.categories();
   const { id } = req.body;
 
   const newCategories = categories.filter((category) => id !== category.id);
 
-  updateCategories(newCategories, 'delete');
+  mockData.update.categories(newCategories, 'delete');
 
   return res.redirect('/admin/categorias');
 });
