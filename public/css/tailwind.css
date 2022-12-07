@@ -521,6 +521,26 @@ video {
   position: fixed;
 }
 
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
+.col-span-6 {
+  grid-column: span 6 / span 6;
+}
+
+.col-span-5 {
+  grid-column: span 5 / span 5;
+}
+
 .m-0 {
   margin: 0px;
 }
@@ -543,6 +563,14 @@ video {
   margin-bottom: 1rem;
 }
 
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -563,12 +591,52 @@ video {
   height: 100vh;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-6 {
+  height: 1.5rem;
+}
+
 .w-full {
   width: 100%;
 }
 
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
 .max-w-screen-2xl {
   max-width: 1536px;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-cols-8 {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -609,6 +677,14 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.self-center {
+  align-self: center;
 }
 
 .rounded-md {
@@ -732,6 +808,10 @@ video {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.outline {
+  outline-style: solid;
 }
 
 .filter {
@@ -1103,6 +1183,36 @@ select:focus {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.placeholder\:text-primary-green::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(63 137 99 / var(--tw-text-opacity));
+}
+
+.placeholder\:text-primary-green::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(63 137 99 / var(--tw-text-opacity));
+}
+
+.placeholder\:opacity-50::-moz-placeholder {
+  opacity: 0.5;
+}
+
+.placeholder\:opacity-50::placeholder {
+  opacity: 0.5;
+}
+
+.placeholder\:opacity-75::-moz-placeholder {
+  opacity: 0.75;
+}
+
+.placeholder\:opacity-75::placeholder {
+  opacity: 0.75;
+}
+
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
+}
+
 .hover\:border-dark-primary-green:hover {
   --tw-border-opacity: 1;
   border-color: rgb(39 84 61 / var(--tw-border-opacity));
@@ -1160,6 +1270,18 @@ select:focus {
 }
 
 @media (min-width: 575px) {
+  .xs\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
+  .xs\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .xs\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .xs\:flex-row {
     flex-direction: row;
   }

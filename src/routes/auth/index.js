@@ -43,6 +43,7 @@ router.post('/cadastrar', async (req, res) => {
     first_name: firstName,
     last_name: lastName,
     is_admin: String(false),
+    favorite_ids: [],
   };
   newUsers.push(newUser);
 

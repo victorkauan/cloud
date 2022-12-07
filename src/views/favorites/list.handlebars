@@ -1,0 +1,29 @@
+<h1 class='title'>Lista de favoritos:</h1>
+<ul class='list'>
+  {{#each favoriteProducts}}
+    <li class='list-card'>
+      <div class='flex items-center justify-between'>
+        <h2 class='text-xl font-bold'>{{this.name}}</h2>
+
+        <form action='/favoritos/favoritar' method='POST' class='mb-0'>
+          <input
+            type='hidden'
+            name='product_id'
+            id='product_id'
+            value='{{this.id}}'
+          />
+          <button type='submit'>
+            <img
+              src='/assets/icons/green-heart-{{#if this.favorited}}solid{{else}}outline{{/if}}.svg'
+              alt='Ícone de favoritos'
+              class='w-6 h-6'
+            />
+          </button>
+        </form>
+      </div>
+
+      <p>{{this.description}}</p>
+      <p class='font-bold text-2xl mt-2'>{{this.formatted_price}}</p>
+    </li>
+  {{/each}}
+</ul>
