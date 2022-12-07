@@ -19,15 +19,20 @@ router.post('/adicionar', async (req, res) => {
   const carts = await mockData.get.carts();
   const newCarts = [...carts];
 
-  const cart = {
-    user_id: req.session.user.id,
-    products: [{ id: req.body.id, quantity: req.body.quantity }],
-  };
-  newCarts.push(cart);
+  const { id } = req.session.user;
+  const { id: product_id, quantity } = req.body;
 
-  mockData.update.carts(newCarts, 'create');
+  if (Number(quantity) > 0) {
+    const cart = {
+      user_id: id,
+      products: [{ id: product_id, quantity }],
+    };
+    newCarts.push(cart);
 
-  return res.redirect('/carrinho');
+    mockData.update.carts(newCarts, 'create');
+  }
+
+  return res.redirect('/');
 });
 
 router.get('/', async (req, res) => {
@@ -40,14 +45,23 @@ router.get('/', async (req, res) => {
 
   const userCarts = carts.filter((cart) => cart.user_id === id);
   const cartProducts = [];
+  let total = 0;
+
   userCarts.forEach((cart) => {
     cart.products.forEach((cartProduct) => {
       const userProduct = products.find(
         (product) => product.id === cartProduct.id
       );
-      cartProducts.push({ ...userProduct, quantity: cartProduct.quantity });
+      total += Number(userProduct.price) * Number(cartProduct.quantity);
+
+      cartProducts.push({
+        ...userProduct,
+        quantity: cartProduct.quantity,
+      });
     });
   });
+
+  total = total.toLocaleString('pt-BR', currencyFormat);
 
   cartProducts.forEach((product, index) => {
     cartProducts[index]['formatted_price'] = Number(
@@ -59,7 +73,9 @@ router.get('/', async (req, res) => {
     }
   });
 
-  return res.render('cart/list', { cartProducts });
+  console.log(cartProducts);
+
+  return res.render('cart/list', { cartProducts, total });
 });
 
 module.exports = router;

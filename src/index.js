@@ -48,15 +48,24 @@ app.use((req, res, next) => {
 
 // Routes
 app.get('/', async (req, res) => {
+  const users = await mockData.get.users();
+  const carts = await mockData.get.carts();
   const products = await mockData.get.products();
 
-  const users = await mockData.get.users();
-
   let favorite_ids = [];
+  let userCartProductsIds = [];
   if (req.session.user) {
     const { id } = req.session.user;
     const authUser = users.find((user) => user.id === id);
+
     favorite_ids = authUser.favorite_ids;
+
+    userCarts = carts.filter((cart) => cart.user_id === id);
+    userCarts.forEach((userCart) => {
+      userCart.products.forEach((product) => {
+        userCartProductsIds.push(product.id);
+      });
+    });
   }
 
   products.forEach((product, index) => {
@@ -67,6 +76,10 @@ app.get('/', async (req, res) => {
 
     if (favorite_ids.includes(product.id)) {
       products[index]['favorited'] = true;
+    }
+
+    if (userCartProductsIds.includes(product.id)) {
+      products[index]['bought'] = true;
     }
   });
 

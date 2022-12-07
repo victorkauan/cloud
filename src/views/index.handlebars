@@ -34,7 +34,7 @@
           <input
             type='submit'
             value='Comprar'
-            class='font-bold uppercase w-full border-2 border-primary-green rounded-sm flex justify-center items-center gap-2 py-2 col-span-5 transition-colors hover:text-white hover:bg-primary-green xs:col-span-6 hover:cursor-pointer'
+            class='font-bold uppercase w-full border-2 border-primary-green rounded-sm flex justify-center items-center gap-2 py-2 col-span-5 transition-colors {{#if this.bought}}{{else}}hover:{{/if}}text-white {{#if this.bought}}{{else}}hover:{{/if}}bg-primary-green xs:col-span-6 hover:cursor-{{#if this.bought}}not-allowed{{else}}pointer{{/if}}'
           />
           <input
             type='text'

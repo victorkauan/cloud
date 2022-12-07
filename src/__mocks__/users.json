@@ -88,5 +88,14 @@
         "last_name": "Last name 09",
         "is_admin": "true",
         "favorite_ids": []
+    },
+    {
+        "id": "10",
+        "email": "123@123",
+        "password": "$2a$10$mxJCp6XXDYehB29T81SQn.pxkJjLhehCY8DJVnB9oauOKWPieIXrK",
+        "first_name": "123",
+        "last_name": "123",
+        "is_admin": "false",
+        "favorite_ids": []
     }
 ]
