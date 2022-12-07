@@ -1,26 +1,49 @@
-<h1 class="title">Lista de produtos:</h1>
+<h1 class='title'>Lista de produtos:</h1>
 <ul
-  class="grid gap-2 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5"
+  class='grid gap-2 2xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'
 >
   {{#each products}}
-    <li class="border-2 border-primary-green rounded-md p-4 shadow">
-      <h2 class="text-xl font-bold">{{this.name}}</h2>
-      <p>{{this.description}}</p>
-      <p class="font-bold text-2xl my-2">{{this.formatted_price}}</p>
+    <li class='border-2 border-primary-green rounded-md p-4 shadow'>
+      <div class='flex items-center justify-between'>
+        <h2 class='text-xl font-bold'>{{this.name}}</h2>
 
-      <form action="/carrinho/adicionar" method="POST">
-        <input type="hidden" name="id" id="id" value="{{this.id}}" />
-        <input type="text" name="quantity" id="quantity" />
-        <input type="submit" value="Comprar" />
-      </form>
-      <form action="/favoritos/add" method="POST">
-        <input
-          type="hidden"
-          name="product_id"
-          id="product_id"
-          value="{{this.id}}"
-        />
-        <input type="submit" value="favoritar" />
+        <form action='/favoritos/favoritar' method='POST' class='mb-0'>
+          <input
+            type='hidden'
+            name='product_id'
+            id='product_id'
+            value='{{this.id}}'
+          />
+          <button type='submit'>
+            <img
+              src='/assets/icons/green-heart-{{#if this.favorited}}solid{{else}}outline{{/if}}.svg'
+              alt='Ícone de favoritos'
+              class='w-6 h-6'
+            />
+          </button>
+        </form>
+      </div>
+
+      <p>{{this.description}}</p>
+      <p class='font-bold text-2xl my-2'>{{this.formatted_price}}</p>
+
+      <form action='/carrinho/adicionar' method='POST'>
+        <input type='hidden' name='id' id='id' value='{{this.id}}' />
+
+        <div class='grid grid-cols-8 gap-1'>
+          <input
+            type='submit'
+            value='Comprar'
+            class='font-bold uppercase w-full border-2 border-primary-green rounded-sm flex justify-center items-center gap-2 py-2 col-span-5 transition-colors hover:text-white hover:bg-primary-green xs:col-span-6 hover:cursor-pointer'
+          />
+          <input
+            type='text'
+            name='quantity'
+            id='quantity'
+            value='0'
+            class='text-center w-full col-span-3 placeholder:text-primary-green placeholder:opacity-75 xs:col-span-2'
+          />
+        </div>
       </form>
     </li>
   {{/each}}

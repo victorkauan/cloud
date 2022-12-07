@@ -1,14 +1,19 @@
 // - Express
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 // - Data functions
-const { mockData } = require("../services/mockData");
+const { mockData } = require('../services/mockData');
 
-router.get("/adicionar", (req, res) => {
-  return res.render("cart/add", { title: "Carrinho" });
+// Middlewares
+const authMiddleware = require('../middlewares/auth');
+
+router.use(authMiddleware);
+
+router.get('/adicionar', (req, res) => {
+  return res.render('cart/createForm', { title: 'Carrinho' });
 });
 
-router.post("/adicionar", async (req, res) => {
+router.post('/adicionar', async (req, res) => {
   const carts = await mockData.get.carts();
   const newCarts = [...carts];
 
@@ -18,12 +23,12 @@ router.post("/adicionar", async (req, res) => {
   };
   newCarts.push(cart);
 
-  mockData.update.carts(newCarts, "create");
+  mockData.update.carts(newCarts, 'create');
 
-  return res.redirect("/carrinho");
+  return res.redirect('/carrinho');
 });
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   const carts = await mockData.get.carts();
   const products = await mockData.get.products();
 
@@ -34,8 +39,7 @@ router.get("/", async (req, res) => {
       });
     });
   });
-
-  return res.render("cart/listCart", { carts });
+  return res.render('cart/list', { carts });
 });
 
 module.exports = router;

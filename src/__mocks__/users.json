@@ -1,82 +1,103 @@
 [
-  {
-    "id": "0",
-    "email": "email00@email.com",
-    "password": "password00",
-    "first_name": "First name 00",
-    "last_name": "Last name 00",
-    "is_admin": "false"
-  },
-  {
-    "id": "1",
-    "email": "email01@email.com",
-    "password": "password01",
-    "first_name": "First name 01",
-    "last_name": "Last name 01",
-    "is_admin": "false"
-  },
-  {
-    "id": "2",
-    "email": "email02@email.com",
-    "password": "password02",
-    "first_name": "First name 02",
-    "last_name": "Last name 02",
-    "is_admin": "false"
-  },
-  {
-    "id": "3",
-    "email": "email03@email.com",
-    "password": "password03",
-    "first_name": "First name 03",
-    "last_name": "Last name 03",
-    "is_admin": "false"
-  },
-  {
-    "id": "4",
-    "email": "email04@email.com",
-    "password": "password04",
-    "first_name": "First name 04",
-    "last_name": "Last name 04",
-    "is_admin": "false"
-  },
-  {
-    "id": "5",
-    "email": "email05@email.com",
-    "password": "password05",
-    "first_name": "First name 05",
-    "last_name": "Last name 05",
-    "is_admin": "true"
-  },
-  {
-    "id": "6",
-    "email": "email06@email.com",
-    "password": "password06",
-    "first_name": "First name 06",
-    "last_name": "Last name 06",
-    "is_admin": "true"
-  },
-  {
-    "id": "7",
-    "email": "email07@email.com",
-    "password": "password07",
-    "first_name": "First name 07",
-    "last_name": "Last name 07",
-    "is_admin": "true"
-  },
-  {
-    "id": "8",
-    "email": "email08@email.com",
-    "password": "password08",
-    "first_name": "First name 08",
-    "last_name": "Last name 08",
-    "is_admin": "true"
-  },
-  {
-    "id": "9",
-    "email": "email09@email.com",
-    "password": "password09",
-    "first_name": "First name 09",
-    "last_name": "Last name 09",
-    "is_admin": "true"
-  }
+    {
+        "id": "0",
+        "email": "email00@email.com",
+        "password": "password00",
+        "first_name": "First name 00",
+        "last_name": "Last name 00",
+        "is_admin": "false",
+        "favorite_ids": []
+    },
+    {
+        "id": "1",
+        "email": "email01@email.com",
+        "password": "password01",
+        "first_name": "First name 01",
+        "last_name": "Last name 01",
+        "is_admin": "false",
+        "favorite_ids": []
+    },
+    {
+        "id": "2",
+        "email": "email02@email.com",
+        "password": "password02",
+        "first_name": "First name 02",
+        "last_name": "Last name 02",
+        "is_admin": "false",
+        "favorite_ids": []
+    },
+    {
+        "id": "3",
+        "email": "email03@email.com",
+        "password": "password03",
+        "first_name": "First name 03",
+        "last_name": "Last name 03",
+        "is_admin": "false",
+        "favorite_ids": []
+    },
+    {
+        "id": "4",
+        "email": "email04@email.com",
+        "password": "password04",
+        "first_name": "First name 04",
+        "last_name": "Last name 04",
+        "is_admin": "false",
+        "favorite_ids": []
+    },
+    {
+        "id": "5",
+        "email": "email05@email.com",
+        "password": "password05",
+        "first_name": "First name 05",
+        "last_name": "Last name 05",
+        "is_admin": "true",
+        "favorite_ids": []
+    },
+    {
+        "id": "6",
+        "email": "email06@email.com",
+        "password": "password06",
+        "first_name": "First name 06",
+        "last_name": "Last name 06",
+        "is_admin": "true",
+        "favorite_ids": []
+    },
+    {
+        "id": "7",
+        "email": "email07@email.com",
+        "password": "password07",
+        "first_name": "First name 07",
+        "last_name": "Last name 07",
+        "is_admin": "true",
+        "favorite_ids": []
+    },
+    {
+        "id": "8",
+        "email": "email08@email.com",
+        "password": "password08",
+        "first_name": "First name 08",
+        "last_name": "Last name 08",
+        "is_admin": "true",
+        "favorite_ids": []
+    },
+    {
+        "id": "9",
+        "email": "email09@email.com",
+        "password": "password09",
+        "first_name": "First name 09",
+        "last_name": "Last name 09",
+        "is_admin": "true",
+        "favorite_ids": []
+    },
+    {
+        "id": "10",
+        "email": "123@123",
+        "password": "$2a$10$riSJp4/vg1XfUObpqx7BwuCQoa0ZJKJTOH2ZPLOenHUKKdUBtOXIy",
+        "first_name": "Victor Kauan",
+        "last_name": "123",
+        "is_admin": "false",
+        "favorite_ids": [
+            "3"
+        ]
+    }
 ]
