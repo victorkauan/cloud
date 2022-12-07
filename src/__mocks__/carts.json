@@ -46,49 +46,5 @@
                 "quantity": "4"
             }
         ]
-    },
-    {
-        "user_id": "4",
-        "products": [
-            {
-                "id": "1",
-                "quantity": "1"
-            },
-            {
-                "id": "3",
-                "quantity": "20"
-            },
-            {
-                "id": "0",
-                "quantity": "2"
-            }
-        ]
-    },
-    {
-        "user_id": "10",
-        "products": [
-            {
-                "id": "0",
-                "quantity": "0"
-            }
-        ]
-    },
-    {
-        "user_id": "10",
-        "products": [
-            {
-                "id": "0",
-                "quantity": "0"
-            }
-        ]
-    },
-    {
-        "user_id": "10",
-        "products": [
-            {
-                "id": "0",
-                "quantity": "0"
-            }
-        ]
     }
 ]

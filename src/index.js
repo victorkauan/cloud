@@ -12,6 +12,8 @@ const session = require('express-session');
 const authConfig = require('./configuration/auth.json');
 // - Data functions
 const { mockData } = require('./services/mockData');
+// - Formats
+const { currencyFormat } = require('./utils/formats');
 // - Routes
 const auth = require('./routes/auth');
 const admin = require('./routes/admin');
@@ -56,12 +58,6 @@ app.get('/', async (req, res) => {
     const authUser = users.find((user) => user.id === id);
     favorite_ids = authUser.favorite_ids;
   }
-
-  const currencyFormat = {
-    minimumFractionDigits: 2,
-    style: 'currency',
-    currency: 'BRL',
-  };
 
   products.forEach((product, index) => {
     products[index]['formatted_price'] = Number(product.price).toLocaleString(

@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 // - Data functions
 const { mockData } = require('../services/mockData');
+// - Formats
+const { currencyFormat } = require('../utils/formats');
 
 // Middlewares
 const authMiddleware = require('../middlewares/auth');
@@ -45,12 +47,6 @@ router.get('/', async (req, res) => {
   const favoriteProducts = products.filter((product) =>
     favorite_ids.includes(product.id)
   );
-
-  const currencyFormat = {
-    minimumFractionDigits: 2,
-    style: 'currency',
-    currency: 'BRL',
-  };
 
   favoriteProducts.forEach((product, index) => {
     favoriteProducts[index]['formatted_price'] = Number(

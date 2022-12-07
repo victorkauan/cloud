@@ -88,16 +88,5 @@
         "last_name": "Last name 09",
         "is_admin": "true",
         "favorite_ids": []
-    },
-    {
-        "id": "10",
-        "email": "123@123",
-        "password": "$2a$10$riSJp4/vg1XfUObpqx7BwuCQoa0ZJKJTOH2ZPLOenHUKKdUBtOXIy",
-        "first_name": "Victor Kauan",
-        "last_name": "123",
-        "is_admin": "false",
-        "favorite_ids": [
-            "3"
-        ]
     }
 ]

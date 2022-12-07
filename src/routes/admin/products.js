@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 // - Data functions
 const { mockData } = require('../../services/mockData');
+// - Formats
+const { currencyFormat } = require('../../utils/formats');
 
 // Create
 router.get('/criar', async (req, res) => {
@@ -38,12 +40,6 @@ router.post('/criar', async (req, res) => {
 router.get('/', async (req, res) => {
   const products = await mockData.get.products();
   const categories = await mockData.get.categories();
-
-  const currencyFormat = {
-    minimumFractionDigits: 2,
-    style: 'currency',
-    currency: 'BRL',
-  };
 
   products.forEach((product, index) => {
     const { category_id: categoryId } = product;

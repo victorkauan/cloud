@@ -11,30 +11,30 @@
         </a>
       </h1>
       <ul class='flex flex-col flex-wrap gap-4 2xs:flex-row'>
-        {{! <li>
-          <a href='/produtos' class='nav-link'>
-            Produtos
-          </a>
+         <li>
+          <p>
+            <a
+              href='/carrinho'
+              class='nav-link'
+            >
+            Carrinho
+            </a>
+          </p>
         </li>
-        <li>
-          <a href='/categorias' class='nav-link'>
-            Categorias
-          </a>
-        </li> }}
-      </ul>
-    </div>
-    <ul class='flex justify-center items-center {{#if user}}{{else}}flex-col-reverse{{/if}} flex-wrap gap-2 xs:flex-row xs:gap-4'>
-      {{#if user}}
         <li>
           <p>
             <a
               href='/favoritos'
-              class='font-bold transition-colors hover:text-dark-primary-green'
+              class='nav-link'
             >
             Favoritos
             </a>
           </p>
         </li>
+      </ul>
+    </div>
+    <ul class='flex justify-center items-center {{#if user}}{{else}}flex-col-reverse{{/if}} flex-wrap gap-2 xs:flex-row xs:gap-4'>
+      {{#if user}}
         <li>
           <p>
             Olá,
