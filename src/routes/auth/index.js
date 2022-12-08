@@ -86,6 +86,7 @@ router.post('/entrar', async (req, res) => {
 // Logout
 router.get('/sair', (req, res) => {
   req.session = null;
+  res.redirect('/');
 });
 
 module.exports = router;
