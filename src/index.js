@@ -7,7 +7,7 @@ const { engine } = require('express-handlebars');
 // - Path
 const path = require('path');
 // - Express session
-const session = require('express-session');
+const session = require('cookie-session');
 // - Secret
 const authConfig = require('./configuration/auth.json');
 // - Data functions
