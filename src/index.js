@@ -6,6 +6,8 @@ const PORT = 3001;
 const { engine } = require('express-handlebars');
 // - Path
 const path = require('path');
+// - File System
+const fs = require('fs');
 // - Express session
 const session = require('cookie-session');
 // - Secret
@@ -19,6 +21,19 @@ const auth = require('./routes/auth');
 const admin = require('./routes/admin');
 const cart = require('./routes/cart');
 const favorite = require('./routes/favorite');
+
+fs.writeFile('/tmp/users.json', '[]', () => {
+  console.log('User file created successfully!');
+});
+fs.writeFile('/tmp/products.json', '[]', () => {
+  console.log('Product file created successfully!');
+});
+fs.writeFile('/tmp/categories.json', '[]', () => {
+  console.log('Category file created successfully!');
+});
+fs.writeFile('/tmp/carts.json', '[]', () => {
+  console.log('Cart file created successfully!');
+});
 
 // Configurations
 // - Handlebars
