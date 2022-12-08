@@ -37,7 +37,10 @@ router.post('/cadastrar', async (req, res) => {
   const hash = await bcrypt.hash(password, 10);
 
   const newUser = {
-    id: String(Number(newUsers[newUsers.length - 1].id) + 1),
+    id:
+      newUsers.length === 0
+        ? '0'
+        : String(Number(newUsers[newUsers.length - 1].id) + 1),
     email,
     password: hash,
     first_name: firstName,

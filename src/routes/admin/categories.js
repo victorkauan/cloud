@@ -16,7 +16,10 @@ router.post('/criar', async (req, res) => {
   const categoryName = req.body.name;
 
   const newCategory = {
-    id: String(Number(categories[categories.length - 1].id) + 1),
+    id:
+      categories.length === 0
+        ? '0'
+        : String(Number(categories[categories.length - 1].id) + 1),
     name: categoryName,
   };
 

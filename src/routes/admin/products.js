@@ -21,7 +21,10 @@ router.post('/criar', async (req, res) => {
   const { name, description, price, category_id: categoryId } = req.body;
 
   const newProduct = {
-    id: String(Number(products[products.length - 1].id) + 1),
+    id:
+      products.length === 0
+        ? '0'
+        : String(Number(products[products.length - 1].id) + 1),
     name,
     description,
     price,
