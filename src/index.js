@@ -74,7 +74,7 @@ app.get('/', async (req, res) => {
     const { id } = req.session.user;
     const authUser = users.find((user) => user.id === id);
 
-    favorite_ids = authUser.favorite_ids ?? [];
+    favorite_ids = authUser?.favorite_ids;
 
     userCarts = carts.filter((cart) => cart.user_id === id);
     userCarts.forEach((userCart) => {
@@ -90,7 +90,7 @@ app.get('/', async (req, res) => {
       currencyFormat
     );
 
-    if (favorite_ids.includes(product.id)) {
+    if (favorite_ids && favorite_ids.includes(product.id)) {
       products[index]['favorited'] = true;
     }
 
