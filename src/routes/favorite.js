@@ -41,6 +41,10 @@ router.get('/', async (req, res) => {
   const users = await mockData.get.users();
   const products = await mockData.get.products();
 
+  if (users.length === 0) {
+    return res.redirect('/');
+  }
+
   const { id } = req.session.user;
   const { favorite_ids } = users.find((user) => user.id === id);
 
