@@ -1,7 +1,7 @@
 // - Path
 const path = require('path');
 
-const basicPath = path.join('/', 'tmp');
+const basicPath = path.resolve(__dirname, '..', '..', 'tmp');
 
 module.exports = {
   mockPaths: {
