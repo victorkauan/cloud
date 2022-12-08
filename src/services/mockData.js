@@ -15,7 +15,7 @@ function getData(path, prefix) {
   const date = new Date().toLocaleDateString('en-US', dateConfiguration);
   console.log(`[${date}] ${prefix} list handles successfully!`);
 
-  return JSON.parse(data);
+  return JSON.parse(data ?? []);
 }
 
 function updateData(path, data, action, prefix) {
