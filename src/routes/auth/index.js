@@ -85,13 +85,7 @@ router.post('/entrar', async (req, res) => {
 
 // Logout
 router.get('/sair', (req, res) => {
-  req.session.destroy((error) => {
-    if (error) {
-      return res.redirect('/');
-    }
-
-    return res.redirect('/');
-  });
+  req.session = null;
 });
 
 module.exports = router;
